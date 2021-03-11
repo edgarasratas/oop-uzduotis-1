@@ -11,3 +11,6 @@ Taip pat, jeigu nėra žinomi studento pažymiai, galima pasirinkti, kad program
 -----------------------------------------------------------------------
 Pridėta galimybė skaityti iš failų bei rezultatus išvesti į rezultatų failą.
 ![image](https://user-images.githubusercontent.com/73912309/110829317-a6380700-82a0-11eb-854d-c8891dc0ad22.png)
+-------------------------------------------------------------------------------------------------------------------
+![image](https://user-images.githubusercontent.com/73912309/110829401-bf40b800-82a0-11eb-88e4-b5ee4a18c51b.png)
+-------------------------------------------------------------------------------------------------------------------
