@@ -15,3 +15,6 @@ Pridėta galimybė skaityti iš failų bei rezultatus išvesti rezultatų faile.
 -------------------------------------------------------------------------------------------------------------------
 ![image](https://user-images.githubusercontent.com/73912309/110829401-bf40b800-82a0-11eb-88e4-b5ee4a18c51b.png)
 -------------------------------------------------------------------------------------------------------------------
+[v0.3](https://github.com/edgarasratas/oop-uzduotis-1/tree/v0.3)
+------------------------------------------------------------------------------------
+Programa papildyta dvejais "Try/Catch" papildymais tam, kad galima būtų patikrinti ar failas egzistuoja bei ar visi suvesti pažymiai yra teisingi.
