@@ -2,8 +2,8 @@
 
 FILE* fin, * fout;
 
-static string isFileOpen() {
-    
+bool compareByLastName(const Student& a, const Student& b) {
+    return a.name < b.name;
 }
 
 void nuskaitymas(string fileRead, string fileWrite, vector<Student>& student) {
@@ -13,14 +13,12 @@ void nuskaitymas(string fileRead, string fileWrite, vector<Student>& student) {
     stringstream buffer2;
     Student temp;
     int temp2;
-    int examTemp;
-    int test = 5;
     int sum = 0;
-    float vid;
+    float vid = 0;
 
     auto start = std::chrono::high_resolution_clock::now(); auto st = start;
 
-    ifstream fin(fileRead);
+    ifstream fin(fileRead, std::ios::binary);
 
     try {
         if (fin.fail()) {
@@ -54,7 +52,7 @@ void nuskaitymas(string fileRead, string fileWrite, vector<Student>& student) {
                 buffer2 >> temp2;
                 temp.grade.push_back(temp2);
             }
-
+            
             buffer2.clear();
             temp.examGrade = temp.grade[temp.grade.size() - 1];
             temp.grade.pop_back();
@@ -80,23 +78,17 @@ void nuskaitymas(string fileRead, string fileWrite, vector<Student>& student) {
     start = std::chrono::high_resolution_clock::now();
     ofstream fout(fileWrite);
 
+    sort(student.begin(), student.end(), compareByLastName);
+
     fout << "Pavarde\t\t\t" << "Vardas\t\t" << "Galutinis (Vid)\t\t" << "Galutinis (Med.)\n";
     fout << "------------------------------------------------------------------------\n";
-
-
     for (int i = 0; i < student.size(); i++) {
         student[i].examFinal = 0.6 * student[i].examGrade;
+            fout << student[i].surname << string(16 - student.at(i).surname.length(), ' ') << student[i].name << string(13 - student.at(i).name.length(), ' ') << "\t\t";
 
-        if (i >= 9) {
-            fout << student[i].surname << "\t\t" << student[i].name << "\t\t";
-        }
-        else {
-            fout << student[i].surname << "\t\t" << student[i].name << "\t\t\t";
-        }
-
-        for (int j = 0; j < student[i].numOfGrades; j++) {
+        for (int j = 0; j < student[i].numOfGrades - 1; j++) {
+            sort(student[i].grade.begin(), student[i].grade.end() - 1);
             sum += student[i].grade[j];
-
             try {
                 if (student[i].grade[j] < 1 || student[i].grade[j] > 10 || student[i].examGrade < 1 || student[i].examGrade > 10) {
                     throw std::exception("Ivestas netinkamas pazymys...");
@@ -107,7 +99,8 @@ void nuskaitymas(string fileRead, string fileWrite, vector<Student>& student) {
                 std::exit(EXIT_FAILURE);
             }
         }
-        vid = sum / student[i].numOfGrades;
+        int gradeNr = student[i].numOfGrades - 1;
+        vid = (double) sum / gradeNr;
 
         student[i].final = 0.4 * vid + student[i].examFinal;
 
@@ -120,8 +113,12 @@ void nuskaitymas(string fileRead, string fileWrite, vector<Student>& student) {
             student[i].median = student[i].grade[student[i].numOfGrades / 2];
         }
         student[i].medFinal = (0.4 * student[i].median) + (0.6 * student[i].examGrade);
+        fout << fixed << setprecision(2) << student[i].final;
 
-        fout << student[i].final << "\t\t\t\t\t" << student[i].medFinal << endl;
+        fout.fill(' ');
+        fout.width(20);
+
+        fout << fixed << setprecision(2) << student[i].medFinal << endl;
     }
     cout << "Buferio padalijimas i eiluciu vektoriu uztruko: " << diff2.count() << " s\n";
 
@@ -168,60 +165,64 @@ void skaiciavimas() {
 
         cout << "Ar zinomi studento pazymiai? (y/n)\n";
         cin >> input;
-    label: if (input == "Y" || input == "y") {
 
-        cout << "Iveskite egzamino pazymi: ";
-        cin >> student[i].examGrade;
+        do {
+            if (input == "Y" || input == "y") {
 
-        for (int j = 0; j < student[i].numOfGrades; j++) {
+                cout << "Iveskite egzamino pazymi: ";
+                cin >> student[i].examGrade;
 
-            cout << "Iveskite " << j + 1 << " nd pazymi: ";
-            cin >> temp;
+                for (int j = 0; j < student[i].numOfGrades; j++) {
 
-            student[i].grade.push_back(temp);
+                    cout << "Iveskite " << j + 1 << " nd pazymi: ";
+                    cin >> temp;
 
-            sum += student[i].grade[j];
-        }
+                    student[i].grade.push_back(temp);
 
-        cout << endl;
+                    sum += student[i].grade[j];
+                }
 
-        cout << endl;
-    }
-    else if (input == "N" || input == "n") {
-        srand(time(NULL));
+                cout << endl;
 
-        randomExamGrade = rand() % 10 + 1;
+                cout << endl;
+                break;
+            }
+            else if (input == "N" || input == "n") {
+                srand(time(NULL));
 
-        student[i].examGrade = randomExamGrade;
+                randomExamGrade = rand() % 10 + 1;
+
+                student[i].examGrade = randomExamGrade;
 
 
-        for (int j = 0; j < student[i].numOfGrades; j++) {
-            randomNumber = rand() % 10 + 1;
+                for (int j = 0; j < student[i].numOfGrades; j++) {
+                    randomNumber = rand() % 10 + 1;
 
-            student[i].grade.push_back(randomNumber);
+                    student[i].grade.push_back(randomNumber);
 
-            sum += student[i].grade[j];
-        }
+                    sum += student[i].grade[j];
+                }
 
-        cout << "Egzamino pazymys: " << student[i].examGrade << "\nNd pazymiai: ";
+                cout << "Egzamino pazymys: " << student[i].examGrade << "\nNd pazymiai: ";
 
-        for (int j = 0; j < student[i].numOfGrades; j++) {
-            cout << student[i].grade[j] << " ";
-        }
+                for (int j = 0; j < student[i].numOfGrades; j++) {
+                    cout << student[i].grade[j] << " ";
+                }
 
-        cout << endl;
-    }
-    else {
-        cout << "Prasome iveskite y arba n. Bandykite is naujo\n";
-        cout << "Ar zinomi studento pazymiai? (y/n)\n";
-        cin >> input;
-        goto label;
-    }
+                cout << endl;
+                break;
+            }
+            else {
+                cout << "Prasome iveskite y arba n. Bandykite is naujo\n";
+                cout << "Ar zinomi studento pazymiai? (y/n)\n";
+                cin >> input;
+            }
+        } while (input != "Y" || input != "y" || input != "N" || input != "n");
 
     student[i].examFinal = 0.6 * student[i].examGrade;
 
     for (int j = 1; j < student[i].numOfGrades; j++) {
-        student[i].final = 0.4 * (sum / (student[i].numOfGrades - 1)) + student[i].examFinal;
+        student[i].final = 0.4 * (sum / (student[i].numOfGrades)) + student[i].examFinal;
     }
 
     sum = 0;
@@ -236,36 +237,38 @@ void skaiciavimas() {
     cin >> input;
     cout << endl;
 
-label2: if (input == "Y" || input == "y") {
-    printf("Vardas\t\tPavarde\t\tGalutinis (vid.)\n");
-    printf("-----------------------------------------------------\n");
+    do {
+        if (input == "Y" || input == "y") {
+            printf("Vardas\t\tPavarde\t\tGalutinis (vid.)\n");
+            printf("-----------------------------------------------------\n");
 
-    for (int i = 0; i < n; i++) {
-        printf("%s\t\t%s\t\t%0.2f\n", student[i].name.c_str(), student[i].surname.c_str(), student[i].final);
-    }
-}
-else if (input == "N" || input == "n") {
-    printf("Vardas\t\tPavarde\t\tGalutinis (med.)\n");
-    printf("-----------------------------------------------------\n");
+            for (int i = 0; i < n; i++) {
+                printf("%s\t\t%s\t\t%0.2f\n", student[i].name.c_str(), student[i].surname.c_str(), student[i].final);
+            }
+            break;
+        }
+        else if (input == "N" || input == "n") {
+            printf("Vardas\t\tPavarde\t\tGalutinis (med.)\n");
+            printf("-----------------------------------------------------\n");
 
-    for (int i = 0; i < n; i++) {
-        sort(student[i].grade.begin(), student[i].grade.end());
+            for (int i = 0; i < n; i++) {
+                sort(student[i].grade.begin(), student[i].grade.end());
 
-        if (student[i].numOfGrades % 2 == 0) {
-            student[i].median = (student[i].grade[student[i].numOfGrades / 2] + student[i].grade[(student[i].numOfGrades / 2) - 1]) / 2.00;
-            printf("%s\t\t%s\t\t%0.2f\n", student[i].name.c_str(), student[i].surname.c_str(), student[i].median);
+                if (student[i].numOfGrades % 2 == 0) {
+                    student[i].median = (student[i].grade[student[i].numOfGrades / 2] + student[i].grade[(student[i].numOfGrades / 2) - 1]) / 2.00;
+                }
+                else {
+                    student[i].median = student[i].grade[student[i].numOfGrades / 2];
+                }
+                student[i].medFinal = (0.4 * student[i].median) + (0.6 * student[i].examGrade);
+                printf("%s\t\t%s\t\t%0.2f\n", student[i].name.c_str(), student[i].surname.c_str(), student[i].medFinal);
+            }
+            break;
         }
         else {
-            student[i].median = student[i].grade[student[i].numOfGrades / 2];
-            printf("%s\t\t%s\t\t%0.2f\n", student[i].name.c_str(), student[i].surname.c_str(), student[i].median);
+            cout << "Prasome iveskite y arba n. Bandykite is naujo\n";
+            cout << "Ar norite, kad atspausdintu galutinio pazymio vidurki (y) ar mediana? (n)\n";
+            cin >> input;
         }
-        student[i].medFinal = (0.4 * student[i].median) + (0.6 * student[i].examGrade);
-    }
-}
-else {
-    cout << "Prasome iveskite y arba n. Bandykite is naujo\n";
-    cout << "Ar norite, kad atspausdintu vidurki galutinio pazymio ar mediana?\n";
-    cin >> input;
-    goto label2;
-}
+    } while (input != "Y" || input != "y" || input != "N" || input != "n");
 }

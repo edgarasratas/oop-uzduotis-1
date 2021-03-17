@@ -1,12 +1,12 @@
 #pragma once
 #include <iostream>
+#include <fstream>
 #include <iomanip>
 #include <string>
 #include <algorithm>
 #include <stdio.h>
 #include <stdlib.h>
 #include <vector>
-#include <fstream>
 #include <chrono>
 #include <sstream>
 
@@ -21,9 +21,9 @@ using std::ofstream;
 using std::chrono::high_resolution_clock;
 using std::getline;
 using std::stringstream;
-using std::setw;
 using std::fixed;
-using std::istreambuf_iterator;
+using std::setprecision;
+using std::fill;
 
 struct Student {
     string name, surname;
