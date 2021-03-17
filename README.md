@@ -1,6 +1,10 @@
 # Užduotis "Pažymiai"
 [v0.1](https://github.com/edgarasratas/oop-uzduotis-1/tree/v0.1)
 -----------------------------------------------------------------
+[v0.1.1](https://github.com/edgarasratas/oop-uzduotis-1/tree/v0.1)
+-----------------------------------------------------------------
+Sutvarkytas vektorių failas.
+-----------------------------------------------------------------
 Šioje programoje galima įrašyti studentų vardus, pavardes bei pažymius (egzamino bei namų darbų).
 Ji automatiškai suskaičiuoja vidurkį ar medianą, priklausomai nuo vartotojo noro.
 Taip pat, jeigu nėra žinomi studento pažymiai, galima pasirinkti, kad programa juos automatiškai sugeneruotų.
