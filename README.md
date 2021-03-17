@@ -1,4 +1,4 @@
-# Užduotis "Pažymiai"
+# Užduotis "Pažymių skaičiuoklė"
 [v0.1](https://github.com/edgarasratas/oop-uzduotis-1/tree/v0.1)
 -----------------------------------------------------------------
 Šioje programoje galima įrašyti studentų vardus, pavardes bei pažymius (egzamino bei namų darbų).
