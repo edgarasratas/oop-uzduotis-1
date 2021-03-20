@@ -9,6 +9,7 @@
 #include <vector>
 #include <chrono>
 #include <sstream>
+#include <time.h>
 
 using std::cout;
 using std::cin;
