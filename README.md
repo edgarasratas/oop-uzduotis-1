@@ -34,4 +34,3 @@ Programa papildyta dvejais "Try/Catch" papildymais tam, kad galima būtų patikr
 1. Programa gali sugeneruoti papildomus .txt failus priklausomai nuo vartotojo pasirinkimo
 2. Studentai yra surūšiuojami į dvi grupes: tie, kurie išlaikė s bei tie, kurie neišlaikė
 3. Programa išveda failų sukūrimo bei studentų rūšiavimo laikus
-------------------------------------------------------------------
