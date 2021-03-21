@@ -12,6 +12,8 @@ void sortLosersAndWinners(string fileRead, string fileSortLosers, string fileSor
     auto start = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> diff;
 
+    createDir("Losers and winners");
+
 	ifstream fin(fileRead, std::ios::binary);
 
     try {
@@ -127,5 +129,6 @@ void sortLosersAndWinners(string fileRead, string fileSortLosers, string fileSor
             diff = std::chrono::high_resolution_clock::now() - start;
         }
     }
+    cout << "Sugeneruoti du surusiuotu studentu failai 'Losers and winners' folderyje\n";
     cout << "Studentu surusiavimas bei ju isvedimas i du atskirus failus uztruko: " << diff.count() << "s\n";
 }
