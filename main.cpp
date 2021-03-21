@@ -17,6 +17,7 @@ int main()
     int inputInt;
     int inputStudentSize;
 
+
     cout << "Ar norite nuskaityti pazymius is failo (Y)?\nPaspaudzius (N) reikes pazymius ivesti\n";
     cin >> input;
 
@@ -33,41 +34,81 @@ int main()
                 cout << "3. 100000 (100 tukst.)\n";
                 cout << "4. 1000000 (1 milijonas)\n";
                 cout << "5. 10000000 (10 milijonu)\n";
-                cout << "6. Generuoti visus failus (pasirinkus si varianta studentai NEBUS surusiuoti)\n";
-                cin >> inputStudentSize;
+                cout << "6. Generuoti visus failus\n";
 
+                cin >> inputStudentSize;
                 do {
                     if (inputStudentSize == 1) {
-                        randomFileGenerator("studentai1000 (random).txt", oneK, student);
-                        sortLosersAndWinners("studentai1000 (random).txt", "losers.txt", "winners.txt", student);
+                        auto start = std::chrono::high_resolution_clock::now();
+
+                        randomFileGenerator("Generated text files\\", "studentai1000 (random).txt", oneK, student);
+                        sortLosersAndWinners("Generated text files\\studentai1000 (random).txt", "Losers and winners\\1000losers.txt", "Losers and winners\\1000winners.txt", student);
+
+                        std::chrono::duration<double> diff = std::chrono::high_resolution_clock::now() - start;
+                        cout << "Visas sugaistas laikas: " << diff.count() << "s";
+
                         exit(0);
                     }
                     else if (inputStudentSize == 2) {
-                        randomFileGenerator("studentai10000 (random).txt", tenK, student);
-                        sortLosersAndWinners("studentai10000 (random).txt", "losers.txt", "winners.txt", student);
+                        auto start = std::chrono::high_resolution_clock::now();
+
+                        randomFileGenerator("Generated text files\\", "studentai10000 (random).txt", tenK, student);
+                        sortLosersAndWinners("Generated text files\\studentai10000 (random).txt", "Losers and winners\\10000losers.txt", "Losers and winners\\10000winners.txt", student);
+
+                        std::chrono::duration<double> diff = std::chrono::high_resolution_clock::now() - start;
+                        cout << "Visas sugaistas laikas: " << diff.count() << "s";
+
                         exit(0);
                     }
                     else if (inputStudentSize == 3) {
-                        randomFileGenerator("studentai100000 (random).txt", hundredK, student);
-                        sortLosersAndWinners("studentai100000 (random).txt", "losers.txt", "winners.txt", student);
+                        auto start = std::chrono::high_resolution_clock::now();
+
+                        randomFileGenerator("Generated text files\\", "studentai100000 (random).txt", hundredK, student);
+                        sortLosersAndWinners("Generated text files\\studentai100000 (random).txt", "Losers and winners\\100000losers.txt", "Losers and winners\\100000winners.txt", student);
+
+                        std::chrono::duration<double> diff = std::chrono::high_resolution_clock::now() - start;
+                        cout << "Visas sugaistas laikas: " << diff.count() << "s";
+
                         exit(0);
                     }
                     else if (inputStudentSize == 4) {
-                        randomFileGenerator("studentai1000000 (random).txt", oneMill, student);
-                        sortLosersAndWinners("studentai1000000 (random).txt", "losers.txt", "winners.txt", student);
+                        auto start = std::chrono::high_resolution_clock::now();
+
+                        randomFileGenerator("Generated text files\\", "studentai1000000 (random).txt", oneMill, student);
+                        sortLosersAndWinners("Generated text files\\studentai1000000 (random).txt", "Losers and winners\\1000000losers.txt", "Losers and winners\\1000000winners.txt", student);
+
+                        std::chrono::duration<double> diff = std::chrono::high_resolution_clock::now() - start;
+                        cout << "Visas sugaistas laikas: " << diff.count() << "s";
+
                         exit(0);
                     }
                     else if (inputStudentSize == 5) {
-                        randomFileGenerator("studentai10000000 (random).txt", tenMill, student);
-                        sortLosersAndWinners("studentai10000000 (random).txt", "losers.txt", "winners.txt", student);
+                        auto start = std::chrono::high_resolution_clock::now();
+
+                        randomFileGenerator("Generated text files\\", "studentai10000000 (random).txt", tenMill, student);
+                        sortLosersAndWinners("Generated text files\\studentai10000000 (random).txt", "Losers and winners\\10000000losers.txt", "Losers and winners\\10000000winners.txt", student);
+
+                        std::chrono::duration<double> diff = std::chrono::high_resolution_clock::now() - start;
+                        cout << "Visas sugaistas laikas: " << diff.count() << "s";
+
                         exit(0);
                     }
                     else if (inputStudentSize == 6) {
-                        randomFileGenerator("studentai1000 (random).txt", oneK, student);
-                        randomFileGenerator("studentai10000 (random).txt", tenK, student);
-                        randomFileGenerator("studentai100000 (random).txt", hundredK, student);
-                        randomFileGenerator("studentai1000000 (random).txt", oneMill, student);
-                        randomFileGenerator("studentai10000000 (random).txt", tenMill, student);
+                        randomFileGenerator("Generated text files\\", "studentai1000 (random).txt", oneK, student);
+                        sortLosersAndWinners("Generated text files\\studentai1000 (random).txt", "Losers and winners\\1000losers.txt", "Losers and winners\\1000winners.txt", student);
+
+                        randomFileGenerator("Generated text files\\", "studentai10000 (random).txt", tenK, student);
+                        sortLosersAndWinners("Generated text files\\studentai10000 (random).txt", "Losers and winners\\10000losers.txt", "Losers and winners\\10000winners.txt", student);
+
+                        randomFileGenerator("Generated text files\\", "studentai100000 (random).txt", hundredK, student);
+                        sortLosersAndWinners("Generated text files\\studentai100000 (random).txt", "Losers and winners\\100000losers.txt", "Losers and winners\\100000winners.txt", student);
+
+                        randomFileGenerator("Generated text files\\", "studentai1000000 (random).txt", oneMill, student);
+                        sortLosersAndWinners("Generated text files\\studentai1000000 (random).txt", "Losers and winners\\1000000losers.txt", "Losers and winners\\1000000winners.txt", student);
+
+                        randomFileGenerator("Generated text files\\", "studentai10000000 (random).txt", tenMill, student);
+                        sortLosersAndWinners("Generated text files\\studentai10000000 (random).txt", "Losers and winners\\10000000losers.txt", "Losers and winners\\10000000winners.txt", student);
+
                         exit(0);
                     }
                     else {
@@ -78,6 +119,8 @@ int main()
                         cout << "3. 100000 (100 tukst.)\n";
                         cout << "4. 1000000 (1 milijonas)\n";
                         cout << "5. 10000000 (10 milijonu)\n";
+                        cout << "6. Generuoti visus failus\n";
+
                         cin >> inputStudentSize;
                     }
                 } while (inputStudentSize != 1 || inputStudentSize != 2 || inputStudentSize != 3 || inputStudentSize != 4 || inputStudentSize != 5);
@@ -87,19 +130,23 @@ int main()
                 cout << "1. studentai10000.txt\n";
                 cout << "2. studentai100000.txt\n";
                 cout << "3. studentai1000000.txt\n";
+
                 cin >> inputInt;
 
                 do {
                     if (inputInt == 1) {
-                        nuskaitymas("studentai10000.txt", "studentai10000_rez.txt", "losers.txt", "winners.txt", student);
+                        nuskaitymas("Text files\\studentai10000.txt", "Text files\\studentai10000_rez.txt",
+                            "Losers and winners\\(Example file) 10000losers.txt", "Losers and winners\\(Example file) 10000winners.txt", student);
                         break;
                     }
                     else if (inputInt == 2) {
-                        nuskaitymas("studentai100000.txt", "studentai100000_rez.txt", "losers.txt", "winners.txt", student);
+                        nuskaitymas("Text files\\studentai100000.txt", "Text files\\studentai100000_rez.txt",
+                            "Losers and winners\\(Example file) 100000losers.txt", "Losers and winners\\(Example file) 100000winners.txt", student);
                         break;
                     }
                     else if (inputInt == 3) {
-                        nuskaitymas("studentai1000000.txt", "studentai1000000_rez.txt", "losers.txt", "winners.txt", student);
+                        nuskaitymas("Text files\\studentai1000000.txt", "Text files\\studentai1000000_rez.txt",
+                            "Losers and winners\\(Example file) 1000000losers.txt", "Losers and winners\\(Example file) 1000000winners.txt", student);
                         break;
                     }
                     else {
@@ -108,6 +155,7 @@ int main()
                         cout << "1. studentai10000.txt\n";
                         cout << "2. studentai100000.txt\n";
                         cout << "3. studentai1000000.txt\n";
+
                         cin >> inputInt;
                     }
                 } while (inputInt != 1 || inputInt != 2 || inputInt != 3);
@@ -117,6 +165,7 @@ int main()
             else {
                 cout << "Klaida. Bandykite dar karta\n";
                 cout << "Ar norite sukurti nauja faila (Y)?\nPaspaudzius (N) programa skaitys is jau esamo failo\n";
+
                 cin >> inputGenerate;
             }
         } while (inputGenerate != "Y" || inputGenerate != "y" || inputGenerate != "N" || inputGenerate != "n");
@@ -129,6 +178,7 @@ int main()
     else {
         cout << "Klaida. Bandykite dar karta\n";
         cout << "Ar norite nuskaityti pazymius is failo (Y)?\nPaspaudzius (N) reikes pazymius ivesti\n";
+
         cin >> input;
     }
     } while (input != "Y" || input != "y" || input != "N" || input != "n");

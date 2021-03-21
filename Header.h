@@ -10,6 +10,10 @@
 #include <chrono>
 #include <sstream>
 #include <time.h>
+#include <Windows.h>
+#include <direct.h>
+
+#define GetCurrentDir _getcwd
 
 using std::cout;
 using std::cin;

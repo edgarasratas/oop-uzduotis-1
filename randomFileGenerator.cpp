@@ -2,7 +2,7 @@
 
 const int gradeNr = 10;
 
-void randomFileGenerator(string fileWrite, int studentSize, vector<Student>& student) {
+void randomFileGenerator(string dir, string fileWrite, int studentSize, vector<Student>& student) {
     vector<int> randomGrade;
     Student temp;
     int temp2;
@@ -15,8 +15,12 @@ void randomFileGenerator(string fileWrite, int studentSize, vector<Student>& stu
     
     auto start = std::chrono::high_resolution_clock::now(); auto st = start;
 
+    dir = "Generated text files\\";
+
+    createDir("Generated text files");
+
     cout << "Generuojama...\n";
-    ofstream fout1(fileWrite);
+    ofstream fout1(dir + fileWrite);
 
     srand(time(NULL));
 
@@ -79,5 +83,5 @@ void randomFileGenerator(string fileWrite, int studentSize, vector<Student>& stu
     }
     std::chrono::duration<double> diff = std::chrono::high_resolution_clock::now() - start;
     cout << "Faila sugeneravo per " << diff.count() << "s\n";
-    cout << "Sugeneruotas failas '" << fileWrite << "'\n";
+    cout << "Sugeneruotas failas '" << fileWrite << "' 'Generated text files' folderyje\n";
 }

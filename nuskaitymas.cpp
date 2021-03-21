@@ -1,4 +1,5 @@
 #include "Header.h"
+#include "Funkcijos.h"
 
 FILE* fin, * fout;
 
@@ -17,6 +18,8 @@ void nuskaitymas(string fileRead, string fileWrite, string fileSortLosers, strin
     float vid = 0;
 
     auto start = std::chrono::high_resolution_clock::now(); auto st = start;
+
+    createDir("Losers and winners");
 
     ifstream fin(fileRead, std::ios::binary);
 
@@ -75,6 +78,7 @@ void nuskaitymas(string fileRead, string fileWrite, string fileSortLosers, strin
     myVector.clear();
 
     start = std::chrono::high_resolution_clock::now();
+
     ofstream fout(fileWrite);
     ofstream foutLosers(fileSortLosers);
     ofstream foutWinners(fileSortWinners);
@@ -157,5 +161,7 @@ void nuskaitymas(string fileRead, string fileWrite, string fileSortLosers, strin
     fout.close();
 
     diff2 = std::chrono::high_resolution_clock::now() - st;
+    cout << "Sugeneruotas failas 'Text files' folderyje\n";
+    cout << "Sugeneruoti du surusiuotu studentu failai 'Losers and winners' folderyje\n";
     cout << "Visas sugaistas laikas: " << diff2.count() << " s\n\n";
 }
