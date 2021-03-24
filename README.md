@@ -35,7 +35,7 @@ Programa papildyta dvejais "Try/Catch" papildymais tam, kad galima būtų patikr
 2. Studentai yra surūšiuojami į dvi grupes: tie, kurie išlaikė s bei tie, kurie neišlaikė
 3. Programa išveda failų sukūrimo bei studentų rūšiavimo laikus
 ![image](https://user-images.githubusercontent.com/73912309/112353997-f2d60600-8cd4-11eb-8010-ee423ec766d5.png)
-
+-----------------------------------------------------------------
 |   Studentų kiekis |   Sugeneravimo trūkmė    |   Nuskaitymo trukmė   |   Studentų surūšiavimo trūkmė   |  Visas sugaištas laikas   |
 |--------------|:-------------:      | :-------------------: | :-----------------------------: | :-----------------------: |
 |      1000         |       0.013385s          |     0.0010931s        |         0.0115191s              |         0.0259972         |
@@ -43,3 +43,6 @@ Programa papildyta dvejais "Try/Catch" papildymais tam, kad galima būtų patikr
 |      100000       |        1.28625s          |     0.0976294s        |         0.882631s               |         2.2665104         |
 |      1000000      |       12.7196s           |     0.987103s         |         8.64162s                |         22.348323         |
 |      10000000     |         125.735s         |     9.76024s          |         86.515s                 |         222.01024         |
+-----------------------------------------------------------------
+[v0.4](https://github.com/edgarasratas/oop-uzduotis-1/tree/v0.4)
+Patobulinimai bei klaidų taisymas. Taip pat .txt failams saugoti yra sukuriami folderiai.
