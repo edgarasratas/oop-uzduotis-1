@@ -36,8 +36,10 @@ Programa papildyta dvejais "Try/Catch" papildymais tam, kad galima būtų patikr
 3. Programa išveda failų sukūrimo bei studentų rūšiavimo laikus
 ![image](https://user-images.githubusercontent.com/73912309/112353997-f2d60600-8cd4-11eb-8010-ee423ec766d5.png)
 
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
+|   Studentų kiekis |   Sugeneravimo trūkmė    |   Nuskaitymo trukmė   |   Studentų surūšiavimo trūkmė   |  Visas sugaištas laikas   |
+|--------------|:-------------:      | :-------------------: | :-----------------------------: | :-----------------------: |
+|      1000         |       0.013385s          |     0.0010931s        |         0.0115191s              |         0.0259972         |
+|      10000        |     0.127771s            |     0.0106337s        |         0.0880599s              |         0.2264646         |
+|      100000       |        1.28625s          |     0.0976294s        |         0.882631s               |         2.2665104         |
+|      1000000      |       12.7196s           |     0.987103s         |         8.64162s                |         22.348323         |
+|      10000000     |         125.735s         |     9.76024s          |         86.515s                 |         222.01024         |
