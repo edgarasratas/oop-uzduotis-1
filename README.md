@@ -45,4 +45,5 @@ Programa papildyta dvejais "Try/Catch" papildymais tam, kad galima būtų patikr
 |      10000000     |         125.735s         |     9.76024s          |         86.515s                 |         222.01024         |
 -----------------------------------------------------------------
 [v0.4.1](https://github.com/edgarasratas/oop-uzduotis-1/tree/v0.4)
+-----------------------------------------------------------------
 Patobulinimai bei klaidų taisymas. Taip pat .txt failams saugoti yra sukuriami folderiai.
