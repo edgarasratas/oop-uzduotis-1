@@ -14,9 +14,40 @@ int main()
     string eil;
     string name, surname;
     vector<Student> student;
+    deque<Student> studentD;
+    list<Student> studentL;
     int inputInt;
     int inputStudentSize;
+    int inputContainer;
+    string resultType;
+    int index = 0;
 
+    do {
+        index++;
+        if (index == 1) {
+        }
+        else
+        cout << "Neteisinga ivestis. Bandykite dar karta.\n";
+
+        cout << "Pasirinkite konteinerio tipa: \n";
+        cout << "1. Vector\n";
+        cout << "2. Deque\n";
+        cout << "3. List\n";
+        cin >> inputContainer;
+        if (cin.fail()) {
+            cin.clear();
+            cin.ignore();
+        }
+        if (inputContainer == 1 || inputContainer == 2 || inputContainer == 3)
+            break;
+    } while (inputContainer != 1 || inputContainer != 2 || inputContainer != 3);
+
+    if (inputContainer == 1)
+        cout << "Naudojamas 'vector' tipo konteineris...\n";
+    else if (inputContainer == 2)
+        cout << "Naudojamas 'deque' tipo konteineris...\n";
+    else if (inputContainer == 3)
+        cout << "Naudojamas 'list' tipo konteineris...\n";
 
     cout << "Ar norite nuskaityti pazymius is failo (Y)?\nPaspaudzius (N) reikes pazymius ivesti\n";
     cin >> input;
@@ -38,76 +69,291 @@ int main()
 
                 cin >> inputStudentSize;
                 do {
-                    if (inputStudentSize == 1) {
+                    if (inputStudentSize == 1 && inputContainer == 1) {
                         auto start = std::chrono::high_resolution_clock::now();
 
                         randomFileGenerator("Generated text files\\", "studentai1000 (random).txt", oneK, student);
-                        sortLosersAndWinners("Generated text files\\studentai1000 (random).txt", "Losers and winners\\1000losers.txt", "Losers and winners\\1000winners.txt", student);
+                        sortLosersAndWinnersVector("Generated text files\\studentai1000 (random).txt", "Losers and winners\\1000losers.txt", "Losers and winners\\1000winners.txt", student);
 
                         std::chrono::duration<double> diff = std::chrono::high_resolution_clock::now() - start;
                         cout << "Visas sugaistas laikas: " << diff.count() << "s";
 
                         exit(0);
                     }
-                    else if (inputStudentSize == 2) {
+                    else if (inputStudentSize == 2 && inputContainer == 1) {
                         auto start = std::chrono::high_resolution_clock::now();
 
                         randomFileGenerator("Generated text files\\", "studentai10000 (random).txt", tenK, student);
-                        sortLosersAndWinners("Generated text files\\studentai10000 (random).txt", "Losers and winners\\10000losers.txt", "Losers and winners\\10000winners.txt", student);
+                        sortLosersAndWinnersVector("Generated text files\\studentai10000 (random).txt", "Losers and winners\\10000losers.txt", "Losers and winners\\10000winners.txt", student);
 
                         std::chrono::duration<double> diff = std::chrono::high_resolution_clock::now() - start;
                         cout << "Visas sugaistas laikas: " << diff.count() << "s";
 
                         exit(0);
                     }
-                    else if (inputStudentSize == 3) {
+                    else if (inputStudentSize == 3 && inputContainer == 1) {
                         auto start = std::chrono::high_resolution_clock::now();
 
                         randomFileGenerator("Generated text files\\", "studentai100000 (random).txt", hundredK, student);
-                        sortLosersAndWinners("Generated text files\\studentai100000 (random).txt", "Losers and winners\\100000losers.txt", "Losers and winners\\100000winners.txt", student);
+                        sortLosersAndWinnersVector("Generated text files\\studentai100000 (random).txt", "Losers and winners\\100000losers.txt", "Losers and winners\\100000winners.txt", student);
 
                         std::chrono::duration<double> diff = std::chrono::high_resolution_clock::now() - start;
                         cout << "Visas sugaistas laikas: " << diff.count() << "s";
 
                         exit(0);
                     }
-                    else if (inputStudentSize == 4) {
+                    else if (inputStudentSize == 4 && inputContainer == 1) {
                         auto start = std::chrono::high_resolution_clock::now();
 
                         randomFileGenerator("Generated text files\\", "studentai1000000 (random).txt", oneMill, student);
-                        sortLosersAndWinners("Generated text files\\studentai1000000 (random).txt", "Losers and winners\\1000000losers.txt", "Losers and winners\\1000000winners.txt", student);
+                        sortLosersAndWinnersVector("Generated text files\\studentai1000000 (random).txt", "Losers and winners\\1000000losers.txt", "Losers and winners\\1000000winners.txt", student);
 
                         std::chrono::duration<double> diff = std::chrono::high_resolution_clock::now() - start;
                         cout << "Visas sugaistas laikas: " << diff.count() << "s";
 
                         exit(0);
                     }
-                    else if (inputStudentSize == 5) {
+                    else if (inputStudentSize == 5 && inputContainer == 1) {
                         auto start = std::chrono::high_resolution_clock::now();
 
                         randomFileGenerator("Generated text files\\", "studentai10000000 (random).txt", tenMill, student);
-                        sortLosersAndWinners("Generated text files\\studentai10000000 (random).txt", "Losers and winners\\10000000losers.txt", "Losers and winners\\10000000winners.txt", student);
+                        sortLosersAndWinnersVector("Generated text files\\studentai10000000 (random).txt", "Losers and winners\\10000000losers.txt", "Losers and winners\\10000000winners.txt", student);
 
                         std::chrono::duration<double> diff = std::chrono::high_resolution_clock::now() - start;
                         cout << "Visas sugaistas laikas: " << diff.count() << "s";
 
                         exit(0);
                     }
-                    else if (inputStudentSize == 6) {
+                    else if (inputStudentSize == 6 && inputContainer == 1) {
+                        auto start = std::chrono::high_resolution_clock::now();
+
                         randomFileGenerator("Generated text files\\", "studentai1000 (random).txt", oneK, student);
-                        sortLosersAndWinners("Generated text files\\studentai1000 (random).txt", "Losers and winners\\1000losers.txt", "Losers and winners\\1000winners.txt", student);
+                        sortLosersAndWinnersVector("Generated text files\\studentai1000 (random).txt", "Losers and winners\\1000losers.txt", "Losers and winners\\1000winners.txt", student);
+
+                        std::chrono::duration<double> diff = std::chrono::high_resolution_clock::now() - start;
+                        start = std::chrono::high_resolution_clock::now();
+                        cout << "Visas sugaistas laikas: " << diff.count() << "s\n\n";
 
                         randomFileGenerator("Generated text files\\", "studentai10000 (random).txt", tenK, student);
-                        sortLosersAndWinners("Generated text files\\studentai10000 (random).txt", "Losers and winners\\10000losers.txt", "Losers and winners\\10000winners.txt", student);
+                        sortLosersAndWinnersVector("Generated text files\\studentai10000 (random).txt", "Losers and winners\\10000losers.txt", "Losers and winners\\10000winners.txt", student);
+
+                        diff = std::chrono::high_resolution_clock::now() - start;
+                        start = std::chrono::high_resolution_clock::now();
+
+                        cout << "Visas sugaistas laikas: " << diff.count() << "s\n\n";
 
                         randomFileGenerator("Generated text files\\", "studentai100000 (random).txt", hundredK, student);
-                        sortLosersAndWinners("Generated text files\\studentai100000 (random).txt", "Losers and winners\\100000losers.txt", "Losers and winners\\100000winners.txt", student);
+                        sortLosersAndWinnersVector("Generated text files\\studentai100000 (random).txt", "Losers and winners\\100000losers.txt", "Losers and winners\\100000winners.txt", student);
+
+                        diff = std::chrono::high_resolution_clock::now() - start;
+                        start = std::chrono::high_resolution_clock::now();
+                        cout << "Visas sugaistas laikas: " << diff.count() << "s\n\n";
 
                         randomFileGenerator("Generated text files\\", "studentai1000000 (random).txt", oneMill, student);
-                        sortLosersAndWinners("Generated text files\\studentai1000000 (random).txt", "Losers and winners\\1000000losers.txt", "Losers and winners\\1000000winners.txt", student);
+                        sortLosersAndWinnersVector("Generated text files\\studentai1000000 (random).txt", "Losers and winners\\1000000losers.txt", "Losers and winners\\1000000winners.txt", student);
+
+                        diff = std::chrono::high_resolution_clock::now() - start;
+                        start = std::chrono::high_resolution_clock::now();
+                        cout << "Visas sugaistas laikas: " << diff.count() << "s\n\n";
 
                         randomFileGenerator("Generated text files\\", "studentai10000000 (random).txt", tenMill, student);
-                        sortLosersAndWinners("Generated text files\\studentai10000000 (random).txt", "Losers and winners\\10000000losers.txt", "Losers and winners\\10000000winners.txt", student);
+                        sortLosersAndWinnersVector("Generated text files\\studentai10000000 (random).txt", "Losers and winners\\10000000losers.txt", "Losers and winners\\10000000winners.txt", student);
+
+                        diff = std::chrono::high_resolution_clock::now() - start;
+                        start = std::chrono::high_resolution_clock::now();
+                        cout << "Visas sugaistas laikas: " << diff.count() << "s\n\n";
+
+                        exit(0);
+                    }
+                    else if (inputStudentSize == 1 && inputContainer == 2) {
+                        auto start = std::chrono::high_resolution_clock::now();
+
+                        randomFileGenerator("Generated text files\\", "studentai1000 (random).txt", oneK, student);
+                        sortLosersAndWinnersDeque("Generated text files\\studentai1000 (random).txt", "Losers and winners\\1000losers.txt", "Losers and winners\\1000winners.txt", studentD);
+
+                        std::chrono::duration<double> diff = std::chrono::high_resolution_clock::now() - start;
+                        cout << "Visas sugaistas laikas: " << diff.count() << "s";
+
+                        exit(0);
+                    }
+                    else if (inputStudentSize == 2 && inputContainer == 2) {
+                        auto start = std::chrono::high_resolution_clock::now();
+
+                        randomFileGenerator("Generated text files\\", "studentai10000 (random).txt", tenK, student);
+                        sortLosersAndWinnersDeque("Generated text files\\studentai10000 (random).txt", "Losers and winners\\10000losers.txt", "Losers and winners\\10000winners.txt", studentD);
+
+                        std::chrono::duration<double> diff = std::chrono::high_resolution_clock::now() - start;
+                        cout << "Visas sugaistas laikas: " << diff.count() << "s";
+
+                        exit(0);
+                    }
+                    else if (inputStudentSize == 3 && inputContainer == 2) {
+                        auto start = std::chrono::high_resolution_clock::now();
+
+                        randomFileGenerator("Generated text files\\", "studentai100000 (random).txt", hundredK, student);
+                        sortLosersAndWinnersDeque("Generated text files\\studentai100000 (random).txt", "Losers and winners\\100000losers.txt", "Losers and winners\\100000winners.txt", studentD);
+
+                        std::chrono::duration<double> diff = std::chrono::high_resolution_clock::now() - start;
+                        cout << "Visas sugaistas laikas: " << diff.count() << "s";
+
+                        exit(0);
+                    }
+                    else if (inputStudentSize == 4 && inputContainer == 2) {
+                        auto start = std::chrono::high_resolution_clock::now();
+
+                        randomFileGenerator("Generated text files\\", "studentai1000000 (random).txt", oneMill, student);
+                        sortLosersAndWinnersDeque("Generated text files\\studentai1000000 (random).txt", "Losers and winners\\1000000losers.txt", "Losers and winners\\1000000winners.txt", studentD);
+
+                        std::chrono::duration<double> diff = std::chrono::high_resolution_clock::now() - start;
+                        cout << "Visas sugaistas laikas: " << diff.count() << "s";
+
+                        exit(0);
+                    }
+                    else if (inputStudentSize == 5 && inputContainer == 2) {
+                        auto start = std::chrono::high_resolution_clock::now();
+
+                        randomFileGenerator("Generated text files\\", "studentai10000000 (random).txt", tenMill, student);
+                        sortLosersAndWinnersDeque("Generated text files\\studentai10000000 (random).txt", "Losers and winners\\10000000losers.txt", "Losers and winners\\10000000winners.txt", studentD);
+
+                        std::chrono::duration<double> diff = std::chrono::high_resolution_clock::now() - start;
+                        cout << "Visas sugaistas laikas: " << diff.count() << "s";
+
+                        exit(0);
+                    }
+                    else if (inputStudentSize == 6 && inputContainer == 2) {
+                        auto start = std::chrono::high_resolution_clock::now();
+
+                        randomFileGenerator("Generated text files\\", "studentai1000 (random).txt", oneK, student);
+                        sortLosersAndWinnersDeque("Generated text files\\studentai1000 (random).txt", "Losers and winners\\1000losers.txt", "Losers and winners\\1000winners.txt", studentD);
+
+                        std::chrono::duration<double> diff = std::chrono::high_resolution_clock::now() - start;
+                        start = std::chrono::high_resolution_clock::now();
+                        cout << "Visas sugaistas laikas: " << diff.count() << "s\n\n";
+
+                        randomFileGenerator("Generated text files\\", "studentai10000 (random).txt", tenK, student);
+                        sortLosersAndWinnersDeque("Generated text files\\studentai10000 (random).txt", "Losers and winners\\10000losers.txt", "Losers and winners\\10000winners.txt", studentD);
+
+                        diff = std::chrono::high_resolution_clock::now() - start;
+                        start = std::chrono::high_resolution_clock::now();
+
+                        cout << "Visas sugaistas laikas: " << diff.count() << "s\n\n";
+
+                        randomFileGenerator("Generated text files\\", "studentai100000 (random).txt", hundredK, student);
+                        sortLosersAndWinnersDeque("Generated text files\\studentai100000 (random).txt", "Losers and winners\\100000losers.txt", "Losers and winners\\100000winners.txt", studentD);
+
+                        diff = std::chrono::high_resolution_clock::now() - start;
+                        start = std::chrono::high_resolution_clock::now();
+                        cout << "Visas sugaistas laikas: " << diff.count() << "s\n\n";
+
+                        randomFileGenerator("Generated text files\\", "studentai1000000 (random).txt", oneMill, student);
+                        sortLosersAndWinnersDeque("Generated text files\\studentai1000000 (random).txt", "Losers and winners\\1000000losers.txt", "Losers and winners\\1000000winners.txt", studentD);
+
+                        diff = std::chrono::high_resolution_clock::now() - start;
+                        start = std::chrono::high_resolution_clock::now();
+                        cout << "Visas sugaistas laikas: " << diff.count() << "s\n\n";
+
+                        randomFileGenerator("Generated text files\\", "studentai10000000 (random).txt", tenMill, student);
+                        sortLosersAndWinnersDeque("Generated text files\\studentai10000000 (random).txt", "Losers and winners\\10000000losers.txt", "Losers and winners\\10000000winners.txt", studentD);
+
+                        diff = std::chrono::high_resolution_clock::now() - start;
+                        start = std::chrono::high_resolution_clock::now();
+                        cout << "Visas sugaistas laikas: " << diff.count() << "s\n\n";
+
+                        exit(0);
+                    }
+                    else if (inputStudentSize == 1 && inputContainer == 3) {
+                        auto start = std::chrono::high_resolution_clock::now();
+
+                        randomFileGenerator("Generated text files\\", "studentai1000 (random).txt", oneK, student);
+                        sortLosersAndWinnersList("Generated text files\\studentai1000 (random).txt", "Losers and winners\\1000losers.txt", "Losers and winners\\1000winners.txt", studentL);
+
+                        std::chrono::duration<double> diff = std::chrono::high_resolution_clock::now() - start;
+                        cout << "Visas sugaistas laikas: " << diff.count() << "s";
+
+                        exit(0);
+                    }
+                    else if (inputStudentSize == 2 && inputContainer == 3) {
+                        auto start = std::chrono::high_resolution_clock::now();
+
+                        randomFileGenerator("Generated text files\\", "studentai10000 (random).txt", tenK, student);
+                        sortLosersAndWinnersList("Generated text files\\studentai10000 (random).txt", "Losers and winners\\10000losers.txt", "Losers and winners\\10000winners.txt", studentL);
+
+                        std::chrono::duration<double> diff = std::chrono::high_resolution_clock::now() - start;
+                        cout << "Visas sugaistas laikas: " << diff.count() << "s";
+
+                        exit(0);
+                    }
+                    else if (inputStudentSize == 3 && inputContainer == 3) {
+                        auto start = std::chrono::high_resolution_clock::now();
+
+                        randomFileGenerator("Generated text files\\", "studentai100000 (random).txt", hundredK, student);
+                        sortLosersAndWinnersList("Generated text files\\studentai100000 (random).txt", "Losers and winners\\100000losers.txt", "Losers and winners\\100000winners.txt", studentL);
+
+                        std::chrono::duration<double> diff = std::chrono::high_resolution_clock::now() - start;
+                        cout << "Visas sugaistas laikas: " << diff.count() << "s";
+
+                        exit(0);
+                    }
+                    else if (inputStudentSize == 4 && inputContainer == 3) {
+                        auto start = std::chrono::high_resolution_clock::now();
+
+                        randomFileGenerator("Generated text files\\", "studentai1000000 (random).txt", oneMill, student);
+                        sortLosersAndWinnersList("Generated text files\\studentai1000000 (random).txt", "Losers and winners\\1000000losers.txt", "Losers and winners\\1000000winners.txt", studentL);
+
+                        std::chrono::duration<double> diff = std::chrono::high_resolution_clock::now() - start;
+                        cout << "Visas sugaistas laikas: " << diff.count() << "s";
+
+                        exit(0);
+                    }
+                    else if (inputStudentSize == 5 && inputContainer == 3) {
+                        auto start = std::chrono::high_resolution_clock::now();
+
+                        randomFileGenerator("Generated text files\\", "studentai10000000 (random).txt", tenMill, student);
+                        sortLosersAndWinnersList("Generated text files\\studentai10000000 (random).txt", "Losers and winners\\10000000losers.txt", "Losers and winners\\10000000winners.txt", studentL);
+
+                        std::chrono::duration<double> diff = std::chrono::high_resolution_clock::now() - start;
+                        cout << "Visas sugaistas laikas: " << diff.count() << "s";
+
+                        exit(0);
+                    }
+                    else if (inputStudentSize == 6 && inputContainer == 3) {
+                        auto start = std::chrono::high_resolution_clock::now();
+
+                        randomFileGenerator("Generated text files\\", "studentai1000 (random).txt", oneK, student);
+                        sortLosersAndWinnersList("Generated text files\\studentai1000 (random).txt", "Losers and winners\\1000losers.txt", "Losers and winners\\1000winners.txt", studentL);
+
+                        std::chrono::duration<double> diff = std::chrono::high_resolution_clock::now() - start;
+                        start = std::chrono::high_resolution_clock::now();
+                        cout << "Visas sugaistas laikas: " << diff.count() << "s\n\n";
+
+                        randomFileGenerator("Generated text files\\", "studentai10000 (random).txt", tenK, student);
+                        sortLosersAndWinnersList("Generated text files\\studentai10000 (random).txt", "Losers and winners\\10000losers.txt", "Losers and winners\\10000winners.txt", studentL);
+
+                        diff = std::chrono::high_resolution_clock::now() - start;
+                        start = std::chrono::high_resolution_clock::now();
+
+                        cout << "Visas sugaistas laikas: " << diff.count() << "s\n\n";
+
+                        randomFileGenerator("Generated text files\\", "studentai100000 (random).txt", hundredK, student);
+                        sortLosersAndWinnersList("Generated text files\\studentai100000 (random).txt", "Losers and winners\\100000losers.txt", "Losers and winners\\100000winners.txt", studentL);
+
+                        diff = std::chrono::high_resolution_clock::now() - start;
+                        start = std::chrono::high_resolution_clock::now();
+                        cout << "Visas sugaistas laikas: " << diff.count() << "s\n\n";
+
+                        randomFileGenerator("Generated text files\\", "studentai1000000 (random).txt", oneMill, student);
+                        sortLosersAndWinnersList("Generated text files\\studentai1000000 (random).txt", "Losers and winners\\1000000losers.txt", "Losers and winners\\1000000winners.txt", studentL);
+
+                        diff = std::chrono::high_resolution_clock::now() - start;
+                        start = std::chrono::high_resolution_clock::now();
+                        cout << "Visas sugaistas laikas: " << diff.count() << "s\n\n";
+
+                        randomFileGenerator("Generated text files\\", "studentai10000000 (random).txt", tenMill, student);
+                        sortLosersAndWinnersList("Generated text files\\studentai10000000 (random).txt", "Losers and winners\\10000000losers.txt", "Losers and winners\\10000000winners.txt", studentL);
+
+                        diff = std::chrono::high_resolution_clock::now() - start;
+                        start = std::chrono::high_resolution_clock::now();
+                        cout << "Visas sugaistas laikas: " << diff.count() << "s\n\n";
 
                         exit(0);
                     }
@@ -134,19 +380,49 @@ int main()
                 cin >> inputInt;
 
                 do {
-                    if (inputInt == 1) {
-                        nuskaitymas("Text files\\studentai10000.txt", "Text files\\studentai10000_rez.txt",
+                    if (inputInt == 1 && inputContainer == 1) {
+                        nuskaitymasVector("Text files\\studentai10000.txt", "Text files\\studentai10000_rez.txt",
                             "Losers and winners\\(Example file) 10000losers.txt", "Losers and winners\\(Example file) 10000winners.txt", student);
                         break;
                     }
-                    else if (inputInt == 2) {
-                        nuskaitymas("Text files\\studentai100000.txt", "Text files\\studentai100000_rez.txt",
+                    else if (inputInt == 1 && inputContainer == 2) {
+                        nuskaitymasDeque("Text files\\studentai100000.txt", "Text files\\studentai100000_rez.txt",
+                            "Losers and winners\\(Example file) 100000losers.txt", "Losers and winners\\(Example file) 100000winners.txt", studentD);
+                        break;
+                    }
+                    else if (inputInt == 1 && inputContainer == 3) {
+                        nuskaitymasList("Text files\\studentai1000000.txt", "Text files\\studentai1000000_rez.txt",
+                            "Losers and winners\\(Example file) 1000000losers.txt", "Losers and winners\\(Example file) 1000000winners.txt", studentL);
+                        break;
+                    }
+                    else if (inputInt == 2 && inputContainer == 1) {
+                        nuskaitymasVector("Text files\\studentai100000.txt", "Text files\\studentai100000_rez.txt",
                             "Losers and winners\\(Example file) 100000losers.txt", "Losers and winners\\(Example file) 100000winners.txt", student);
                         break;
                     }
-                    else if (inputInt == 3) {
-                        nuskaitymas("Text files\\studentai1000000.txt", "Text files\\studentai1000000_rez.txt",
+                    else if (inputInt == 2 && inputContainer == 2) {
+                        nuskaitymasDeque("Text files\\studentai100000.txt", "Text files\\studentai100000_rez.txt",
+                            "Losers and winners\\(Example file) 100000losers.txt", "Losers and winners\\(Example file) 100000winners.txt", studentD);
+                        break;
+                    }
+                    else if (inputInt == 2 && inputContainer == 3) {
+                        nuskaitymasList("Text files\\studentai1000000.txt", "Text files\\studentai1000000_rez.txt",
+                            "Losers and winners\\(Example file) 1000000losers.txt", "Losers and winners\\(Example file) 1000000winners.txt", studentL);
+                        break;
+                    }
+                    else if (inputInt == 3 && inputContainer == 1) {
+                        nuskaitymasVector("Text files\\studentai1000000.txt", "Text files\\studentai1000000_rez.txt",
                             "Losers and winners\\(Example file) 1000000losers.txt", "Losers and winners\\(Example file) 1000000winners.txt", student);
+                        break;
+                    }
+                    else if (inputInt == 3 && inputContainer == 2) {
+                        nuskaitymasDeque("Text files\\studentai1000000.txt", "Text files\\studentai1000000_rez.txt",
+                            "Losers and winners\\(Example file) 1000000losers.txt", "Losers and winners\\(Example file) 1000000winners.txt", studentD);
+                        break;
+                    }
+                    else if (inputInt == 3 && inputContainer == 3) {
+                        nuskaitymasList("Text files\\studentai1000000.txt", "Text files\\studentai1000000_rez.txt",
+                            "Losers and winners\\(Example file) 1000000losers.txt", "Losers and winners\\(Example file) 1000000winners.txt", studentL);
                         break;
                     }
                     else {
