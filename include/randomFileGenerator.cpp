@@ -3,7 +3,6 @@
 const int gradeNr = 10;
 
 void randomFileGenerator(string dir, string fileWrite, int studentSize, vector<Student>& student) {
-    vector<int> randomGrade;
     Student temp;
     int temp2;
     stringstream buffer;
@@ -42,43 +41,18 @@ void randomFileGenerator(string dir, string fileWrite, int studentSize, vector<S
         name = ("Vardas" + std::to_string(i + 1));
         surname = ("Pavarde" + std::to_string(i + 1));
 
-        buffer << name;
-        buffer >> temp.name;
+        fout1 << name << std::setw(20) << surname << std::setw(20);
 
-        buffer.clear();
-
-        buffer << surname;
-        buffer >> temp.surname;
-
-        buffer.clear();
-        for (int j = 0; j < gradeNr; j++) {
-            temp.grade.reserve(gradeNr);
-            grade = rand() % 10 + 1;
-            buffer << grade;
-            buffer >> temp2;
-            temp.grade.push_back(temp2);
-            buffer.clear();
-        }
-
-        examGrade = rand() % 10 + 1;
-        buffer << examGrade;
-        buffer >> temp.examGrade;
-        buffer.clear();
-
-        student.push_back(temp);
-        temp = {};
-
-        fout1 << student[i].name << std::setw(20) << std::right << student[i].surname << std::setw(20) << std::right;
         for (int j = 0; j < gradeNr; j++) {
 
-            fout1 << student[i].grade[j] << std::setw(12) << std::right;
+            fout1 << rand() % 10 + 1 << std::setw(12) << std::right;
         }
         fout1 << std::setw(12);
         if (i == studentSize - 1) {
-            fout1 << student[i].examGrade;
+            fout1 << rand() % 10 + 1;
         }
         else {
-            fout1 << student[i].examGrade << endl;
+            fout1 << rand() % 10 + 1 << endl;
         }
     }
     std::chrono::duration<double> diff = std::chrono::high_resolution_clock::now() - start;

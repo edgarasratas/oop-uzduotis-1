@@ -7,6 +7,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <vector>
+#include <deque>
+#include <list>
+#include <iterator>
 #include <chrono>
 #include <sstream>
 #include <time.h>
@@ -29,6 +32,8 @@ using std::stringstream;
 using std::fixed;
 using std::setprecision;
 using std::fill;
+using std::deque;
+using std::list;
 
 struct Student {
     string name, surname;

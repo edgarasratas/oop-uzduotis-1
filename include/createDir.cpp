@@ -8,7 +8,7 @@ int createDir(string folderName) {
         return errno;
     }
 
-    currentPath[sizeof(currentPath) - 1] = '\0'; /* not really required */
+    currentPath[sizeof(currentPath) - 1] = '\0';
     string createFolder = (string)currentPath + "\\" + folderName;
     int status = _mkdir(createFolder.c_str());
 }

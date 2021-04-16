@@ -1,13 +1,7 @@
 #include "Header.h"
 #include "Funkcijos.h"
 
-FILE* fin, * fout;
-
-bool compareByLastName(const Student& a, const Student& b) {
-    return a.name < b.name;
-}
-
-void nuskaitymas(string fileRead, string fileWrite, string fileSortLosers, string fileSortWinners, vector<Student>& student) {
+void nuskaitymasVector(string fileRead, string fileWrite, string fileSortLosers, string fileSortWinners, vector<Student>& student) {
     string eil;
     vector<string> myVector;
     stringstream my_buffer;
