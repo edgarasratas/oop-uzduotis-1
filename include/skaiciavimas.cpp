@@ -19,7 +19,7 @@ void skaiciavimas() {
         cout << "Klaidingas ivedimas. Studentu skaicius turi buti bent 1. Bandykite dar karta\n";
     }
 
-    cout << endl;
+    cout << '\n';
 
     for (int i = 0; i < n; i++) {
         student.push_back(Student());
@@ -53,9 +53,9 @@ void skaiciavimas() {
                     sum += student[i].grade[j];
                 }
 
-                cout << endl;
+                cout << '\n';
 
-                cout << endl;
+                cout << '\n';
                 break;
             }
             else if (input == "N" || input == "n") {
@@ -80,7 +80,7 @@ void skaiciavimas() {
                     cout << student[i].grade[j] << " ";
                 }
 
-                cout << endl;
+                cout << '\n';
                 break;
             }
             else {
@@ -102,11 +102,11 @@ void skaiciavimas() {
 
     for (int j = 0; j < student[i].numOfGrades; j++) {
     }
-    cout << endl;
+    cout << '\n';
     }
     cout << "Ar norite, kad atspausdintu galutinio pazymio vidurki (y) ar mediana? (n)\n";
     cin >> input;
-    cout << endl;
+    cout << '\n';
 
     do {
         if (input == "Y" || input == "y") {

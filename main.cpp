@@ -386,13 +386,13 @@ int main()
                         break;
                     }
                     else if (inputInt == 1 && inputContainer == 2) {
-                        nuskaitymasDeque("Text files\\studentai100000.txt", "Text files\\studentai100000_rez.txt",
-                            "Losers and winners\\(Example file) 100000losers.txt", "Losers and winners\\(Example file) 100000winners.txt", studentD);
+                        nuskaitymasDeque("Text files\\studentai10000.txt", "Text files\\studentai10000_rez.txt",
+                            "Losers and winners\\(Example file) 10000losers.txt", "Losers and winners\\(Example file) 10000winners.txt", studentD);
                         break;
                     }
                     else if (inputInt == 1 && inputContainer == 3) {
-                        nuskaitymasList("Text files\\studentai1000000.txt", "Text files\\studentai1000000_rez.txt",
-                            "Losers and winners\\(Example file) 1000000losers.txt", "Losers and winners\\(Example file) 1000000winners.txt", studentL);
+                        nuskaitymasList("Text files\\studentai10000.txt", "Text files\\studentai10000_rez.txt",
+                            "Losers and winners\\(Example file) 10000losers.txt", "Losers and winners\\(Example file) 10000winners.txt", studentL);
                         break;
                     }
                     else if (inputInt == 2 && inputContainer == 1) {
@@ -406,11 +406,12 @@ int main()
                         break;
                     }
                     else if (inputInt == 2 && inputContainer == 3) {
-                        nuskaitymasList("Text files\\studentai1000000.txt", "Text files\\studentai1000000_rez.txt",
-                            "Losers and winners\\(Example file) 1000000losers.txt", "Losers and winners\\(Example file) 1000000winners.txt", studentL);
+                        nuskaitymasList("Text files\\studentai100000.txt", "Text files\\studentai100000_rez.txt",
+                            "Losers and winners\\(Example file) 100000losers.txt", "Losers and winners\\(Example file) 100000winners.txt", studentL);
                         break;
                     }
                     else if (inputInt == 3 && inputContainer == 1) {
+
                         nuskaitymasVector("Text files\\studentai1000000.txt", "Text files\\studentai1000000_rez.txt",
                             "Losers and winners\\(Example file) 1000000losers.txt", "Losers and winners\\(Example file) 1000000winners.txt", student);
                         break;
