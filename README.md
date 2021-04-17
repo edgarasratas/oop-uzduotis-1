@@ -87,6 +87,6 @@ Programos veikimo laikai priklausomai nuo konteinerio pasirinkimo bei studentų 
 |      List           |         0.090639               |         1.24674            |        7.6152            |
 -----------------------------------------------------------------
 Sistemos parametrai naudojami testavimui:
-CPU: AMD Ryzen 5 3600 6-Core
-RAM: 16 GB DDR4 3200 MHz
-SSD: Samsung 970 Evo Plus M.2 NVMe (r: 3500 MB/s, w: 3300 MB/s) 
+* CPU: AMD Ryzen 5 3600 6-Core
+* RAM: 16 GB DDR4 3200 MHz
+* SSD: Samsung 970 Evo Plus M.2 NVMe (r: 3500 MB/s, w: 3300 MB/s) 
