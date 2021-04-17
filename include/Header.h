@@ -20,7 +20,6 @@
 
 using std::cout;
 using std::cin;
-using std::endl;
 using std::string;
 using std::sort;
 using std::vector;

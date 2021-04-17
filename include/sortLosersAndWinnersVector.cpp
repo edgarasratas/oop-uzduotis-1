@@ -22,7 +22,7 @@ void sortLosersAndWinnersVector(string fileRead, string fileSortLosers, string f
         }
     }
     catch (std::exception& e) {
-        std::cerr << e.what() << endl;
+        std::cerr << e.what() << '\n';
         std::exit(EXIT_FAILURE);
     }
 
@@ -75,7 +75,7 @@ void sortLosersAndWinnersVector(string fileRead, string fileSortLosers, string f
                 }
             }
             catch (std::exception& e) {
-                std::cerr << e.what() << endl;
+                std::cerr << e.what() << '\n';
                 std::exit(EXIT_FAILURE);
             }
         }
@@ -101,7 +101,7 @@ void sortLosersAndWinnersVector(string fileRead, string fileSortLosers, string f
     foutLosers << "Pavarde";
     foutLosers.fill(' ');
     foutLosers.width(26);
-    foutLosers << "Galutinis (vid.)" << endl;
+    foutLosers << "Galutinis (vid.)" << '\n';
 
     foutWinners << "Vardas";
     foutWinners.fill(' ');
@@ -109,14 +109,14 @@ void sortLosersAndWinnersVector(string fileRead, string fileSortLosers, string f
     foutWinners << "Pavarde";
     foutWinners.fill(' ');
     foutWinners.width(26);
-    foutWinners << "Galutinis (vid.)" << endl;
+    foutWinners << "Galutinis (vid.)" << '\n';
 
     for (int i = 0; i < student.size(); i++) {
         if (student[i].final < 5) {
             foutLosers << student[i].name << string(16 - student.at(i).name.length(), ' ') << student[i].surname << string(16 - student.at(i).surname.length(), ' ');
             foutLosers.fill(' ');
             foutLosers.width(10);
-            foutLosers << fixed << setprecision(2) << student[i].final << endl;
+            foutLosers << fixed << setprecision(2) << student[i].final << '\n';
             diff = std::chrono::high_resolution_clock::now() - start;
         }
         else if (student[i].final >= 5) {
@@ -124,7 +124,7 @@ void sortLosersAndWinnersVector(string fileRead, string fileSortLosers, string f
             diff = std::chrono::high_resolution_clock::now() - start;
             foutWinners.fill(' ');
             foutWinners.width(10);
-            foutWinners << fixed << setprecision(2) << student[i].final << endl;
+            foutWinners << fixed << setprecision(2) << student[i].final << '\n';
             diff = std::chrono::high_resolution_clock::now() - start;
         }
     }

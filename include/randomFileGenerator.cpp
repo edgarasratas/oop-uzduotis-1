@@ -35,7 +35,7 @@ void randomFileGenerator(string dir, string fileWrite, int studentSize, vector<S
             fout1 << std::setw(9) << "Egz.";
         }
     }
-    fout1 << endl;
+    fout1 << '\n';
 
     for (int i = 0; i < studentSize; i++) {
         name = ("Vardas" + std::to_string(i + 1));
@@ -52,7 +52,7 @@ void randomFileGenerator(string dir, string fileWrite, int studentSize, vector<S
             fout1 << rand() % 10 + 1;
         }
         else {
-            fout1 << rand() % 10 + 1 << endl;
+            fout1 << rand() % 10 + 1 << '\n';
         }
     }
     std::chrono::duration<double> diff = std::chrono::high_resolution_clock::now() - start;

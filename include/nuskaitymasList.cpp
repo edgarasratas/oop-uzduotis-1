@@ -23,18 +23,18 @@ void nuskaitymasList(string fileRead, string fileWrite, string fileSortLosers, s
         }
     }
     catch (std::exception& e) {
-        std::cerr << e.what() << endl;
+        std::cerr << e.what() << '\n';
         std::exit(EXIT_FAILURE);
     }
 
-    cout << "Failas skaitomas..." << endl;
+    cout << "Failas skaitomas..." << '\n';
 
     getline(fin, eil);
     my_buffer << fin.rdbuf();
 
-    std::chrono::duration<double> diff1 = std::chrono::high_resolution_clock::now() - start;
-    cout << "Failo nuskaitymo trukme: " << diff1.count() << " s\n";
-    cout << "Skaiciuojama..." << endl;
+    std::chrono::duration<double> diff = std::chrono::high_resolution_clock::now() - start;
+    cout << "Failo nuskaitymo trukme: " << diff.count() << " s\n";
+    cout << "Skaiciuojama..." << '\n';
 
     start = std::chrono::high_resolution_clock::now();
     while (my_buffer) {
@@ -62,19 +62,18 @@ void nuskaitymasList(string fileRead, string fileWrite, string fileSortLosers, s
     }
     my_buffer.clear();
 
-    std::chrono::duration<double> diff2 = std::chrono::high_resolution_clock::now() - start;
+    diff = std::chrono::high_resolution_clock::now() - start;
 
-    start = std::chrono::high_resolution_clock::now();
     string output = "";
 
     for (string& a : myDeque) (a.compare(*myDeque.rbegin()) != 0) ? output += a + "\n" : output += a;
     myDeque.clear();
 
-    start = std::chrono::high_resolution_clock::now();
-
     ofstream fout(fileWrite);
     ofstream foutLosers(fileSortLosers);
     ofstream foutWinners(fileSortWinners);
+
+    studentL.sort(compareByLastName);
 
     fout << "Pavarde\t\t\t" << "Vardas\t\t" << "Galutinis (Vid)\t\t" << "Galutinis (Med.)\n";
     fout << "------------------------------------------------------------------------\n";
@@ -91,7 +90,7 @@ void nuskaitymasList(string fileRead, string fileWrite, string fileSortLosers, s
                 }
             }
             catch (std::exception& e) {
-                std::cerr << e.what() << endl;
+                std::cerr << e.what() << '\n';
                 std::exit(EXIT_FAILURE);
             }
         }
@@ -114,8 +113,15 @@ void nuskaitymasList(string fileRead, string fileWrite, string fileSortLosers, s
         fout.fill(' ');
         fout.width(20);
 
-        fout << fixed << setprecision(2) << student.medFinal << endl;
+        fout << fixed << setprecision(2) << student.medFinal << '\n';
     }
+
+    diff = std::chrono::high_resolution_clock::now() - start;
+
+    cout << "Sugeneruotas rezultatu failas 'Text files' folderyje\n";
+    cout << "Rezultatu failo generavimo trukme: " << diff.count() << "s\n";
+
+    start = std::chrono::high_resolution_clock::now();
 
     foutLosers << "Vardas";
     foutLosers.fill(' ');
@@ -123,7 +129,7 @@ void nuskaitymasList(string fileRead, string fileWrite, string fileSortLosers, s
     foutLosers << "Pavarde";
     foutLosers.fill(' ');
     foutLosers.width(26);
-    foutLosers << "Galutinis (vid.)" << endl;
+    foutLosers << "Galutinis (vid.)" << '\n';
 
     foutWinners << "Vardas";
     foutWinners.fill(' ');
@@ -131,30 +137,29 @@ void nuskaitymasList(string fileRead, string fileWrite, string fileSortLosers, s
     foutWinners << "Pavarde";
     foutWinners.fill(' ');
     foutWinners.width(26);
-    foutWinners << "Galutinis (vid.)" << endl;
+    foutWinners << "Galutinis (vid.)" << '\n';
 
     for (auto student : studentL) {
         if (student.final < 5) {
             foutLosers << student.name << string(16 - student.name.length(), ' ') << student.surname << string(16 - student.surname.length(), ' ');
             foutLosers.fill(' ');
             foutLosers.width(10);
-            foutLosers << fixed << setprecision(2) << student.final << endl;
+            foutLosers << fixed << setprecision(2) << student.final << '\n';
         }
         else if (student.final >= 5) {
             foutWinners << student.name << string(16 - student.surname.length(), ' ') << student.surname << string(16 - student.surname.length(), ' ');
             foutWinners.fill(' ');
             foutWinners.width(10);
-            foutWinners << fixed << setprecision(2) << student.final << endl;
+            foutWinners << fixed << setprecision(2) << student.final << '\n';
         }
     }
-
-    cout << "Testing again...\n";
-
     fin.close();
     fout.close();
 
-    diff2 = std::chrono::high_resolution_clock::now() - st;
+    diff = std::chrono::high_resolution_clock::now() - start;
+    std::chrono::duration<double> diff2 = std::chrono::high_resolution_clock::now() - st;
     cout << "Sugeneruotas failas 'Text files' folderyje\n";
     cout << "Sugeneruoti du surusiuotu studentu failai 'Losers and winners' folderyje\n";
+    cout << "Studentu surusiavimas bei ju isvedimas i du atskirus failus uztruko: " << diff.count() << "s\n";
     cout << "Visas sugaistas laikas: " << diff2.count() << " s\n\n";
 }
