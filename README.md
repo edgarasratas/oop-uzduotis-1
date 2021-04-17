@@ -90,3 +90,7 @@ Sistemos parametrai naudojami testavimui:
 * CPU: AMD Ryzen 5 3600 6-Core
 * RAM: 16 GB DDR4 3200 MHz
 * SSD: Samsung 970 Evo Plus M.2 NVMe (r: 3500 MB/s, w: 3300 MB/s) 
+-----------------------------------------------------------------
+[v0.5.1](https://github.com/edgarasratas/oop-uzduotis-1/tree/v0.5)
+-----------------------------------------------------------------
+Pataisytos kelios klaidos susijusios su optimizavimu.
