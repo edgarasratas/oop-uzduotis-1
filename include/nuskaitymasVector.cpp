@@ -3,15 +3,32 @@
 
 void nuskaitymasVector(string fileRead, string fileWrite, string fileSortLosers, string fileSortWinners, vector<Student>& student) {
     string eil;
-    vector<string> myVector;
+    vector<Student> losers;
+    vector<Student> winners;
     stringstream my_buffer;
     stringstream buffer2;
     Student temp;
     int temp2;
     int sum = 0;
     float vid = 0;
+    int strategy;
+    int index = 0;
 
-    student.reserve(100000);
+    do {
+        index++;
+        if (index != 1)
+            cout << "Neteisinga ivestis. Bandykite dar karta.\n";
+
+        cout << "Kokia strategija noretumet panaudoti? (1/2)\n";
+        cin >> strategy;
+
+        if (strategy == 1 || strategy == 2)
+            break;
+    } while (strategy != 1 || strategy != 2);
+
+    student.reserve(10000000);
+    losers.reserve(10000000);
+    winners.reserve(10000000);
 
     auto start = std::chrono::high_resolution_clock::now(); auto st = start;
 
@@ -32,13 +49,11 @@ void nuskaitymasVector(string fileRead, string fileWrite, string fileSortLosers,
 
     getline(fin, eil);
     my_buffer << fin.rdbuf();
-
     std::chrono::duration<double> diff = std::chrono::high_resolution_clock::now() - start;
     cout << "Failo nuskaitymo trukme: " << diff.count() << " s\n";
     cout << "Skaiciuojama..." << '\n';
 
     start = std::chrono::high_resolution_clock::now();
-
     while (my_buffer) {
         if (!my_buffer.eof()) {
             getline(my_buffer, eil);
@@ -46,6 +61,7 @@ void nuskaitymasVector(string fileRead, string fileWrite, string fileSortLosers,
             buffer2 << eil;
 
             buffer2 >> temp.name >> temp.surname;
+
             while (!buffer2.eof()) {
                 buffer2 >> temp2;
                 temp.grade.push_back(temp2);
@@ -56,6 +72,7 @@ void nuskaitymasVector(string fileRead, string fileWrite, string fileSortLosers,
             temp.grade.shrink_to_fit();
             temp.numOfGrades = temp.grade.size();
             student.push_back(temp);
+
             temp = {};
         }
         else {
@@ -122,35 +139,16 @@ void nuskaitymasVector(string fileRead, string fileWrite, string fileSortLosers,
 
     start = std::chrono::high_resolution_clock::now();
 
-    foutLosers << "Vardas";
-    foutLosers.fill(' ');
-    foutLosers.width(17);
-    foutLosers << "Pavarde";
-    foutLosers.fill(' ');
-    foutLosers.width(26);
-    foutLosers << "Galutinis (vid.)" << '\n';
+    //strategy 1
 
-    foutWinners << "Vardas";
-    foutWinners.fill(' ');
-    foutWinners.width(16);
-    foutWinners << "Pavarde";
-    foutWinners.fill(' ');
-    foutWinners.width(26);
-    foutWinners << "Galutinis (vid.)" << '\n';
+    if (strategy == 1) {
+        strategyOneV(student, losers, winners, fileSortLosers, fileSortWinners);
+    }
 
-    for (int i = 0; i < student.size(); i++) {
-        if (student[i].final < 5) {
-            foutLosers << student[i].name << string(16 - student.at(i).name.length(), ' ') << student[i].surname << string(16 - student.at(i).surname.length(), ' ');
-            foutLosers.fill(' ');
-            foutLosers.width(10);
-            foutLosers << fixed << setprecision(2) << student[i].final << '\n';
-        }
-        else if (student[i].final >= 5) {
-            foutWinners << student[i].name << string(16 - student.at(i).surname.length(), ' ') << student[i].surname << string(16 - student.at(i).surname.length(), ' ');
-            foutWinners.fill(' ');
-            foutWinners.width(10);
-            foutWinners << fixed << setprecision(2) << student[i].final << '\n';
-        }
+    //strategy 2
+
+    else if (strategy == 2) {
+        strategyTwoV(student, losers, fileSortLosers, fileSortWinners);
     }
 
     fin.close();

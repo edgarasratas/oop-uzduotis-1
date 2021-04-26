@@ -33,6 +33,7 @@ using std::setprecision;
 using std::fill;
 using std::deque;
 using std::list;
+using std::find_if;
 
 struct Student {
     string name, surname;

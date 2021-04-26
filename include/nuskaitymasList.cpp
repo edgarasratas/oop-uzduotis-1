@@ -10,6 +10,20 @@ void nuskaitymasList(string fileRead, string fileWrite, string fileSortLosers, s
     int temp2;
     int sum = 0;
     float vid = 0;
+    int strategy;
+    int index = 0;
+
+    do {
+        index++;
+        if (index != 1)
+            cout << "Neteisinga ivestis. Bandykite dar karta.\n";
+
+        cout << "Kokia strategija noretumet panaudoti? (1/2)\n";
+        cin >> strategy;
+
+        if (strategy == 1 || strategy == 2)
+            break;
+    } while (strategy != 1 || strategy != 2);
 
     auto start = std::chrono::high_resolution_clock::now(); auto st = start;
 
@@ -77,7 +91,7 @@ void nuskaitymasList(string fileRead, string fileWrite, string fileSortLosers, s
 
     fout << "Pavarde\t\t\t" << "Vardas\t\t" << "Galutinis (Vid)\t\t" << "Galutinis (Med.)\n";
     fout << "------------------------------------------------------------------------\n";
-    for (auto student : studentL) {
+    for (auto &student : studentL) {
         student.examFinal = 0.6 * student.examGrade;
         fout << student.surname << string(16 - student.surname.length(), ' ') << student.name << string(13 - student.name.length(), ' ') << "\t\t";
 
@@ -123,23 +137,7 @@ void nuskaitymasList(string fileRead, string fileWrite, string fileSortLosers, s
 
     start = std::chrono::high_resolution_clock::now();
 
-    foutLosers << "Vardas";
-    foutLosers.fill(' ');
-    foutLosers.width(17);
-    foutLosers << "Pavarde";
-    foutLosers.fill(' ');
-    foutLosers.width(26);
-    foutLosers << "Galutinis (vid.)" << '\n';
-
-    foutWinners << "Vardas";
-    foutWinners.fill(' ');
-    foutWinners.width(16);
-    foutWinners << "Pavarde";
-    foutWinners.fill(' ');
-    foutWinners.width(26);
-    foutWinners << "Galutinis (vid.)" << '\n';
-
-    for (auto student : studentL) {
+    for (Student &student : studentL) {
         if (student.final < 5) {
             foutLosers << student.name << string(16 - student.name.length(), ' ') << student.surname << string(16 - student.surname.length(), ' ');
             foutLosers.fill(' ');

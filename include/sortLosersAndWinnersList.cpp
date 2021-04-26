@@ -1,13 +1,24 @@
 #include "Funkcijos.h"
 
-void sortLosersAndWinnersList(string fileRead, string fileSortLosers, string fileSortWinners, list<Student>& studentL) {
+bool compareByFinalGrade(const Student& a, const Student& b) {
+    return a.final < b.final;
+}
+
+bool isGood(const Student& a) {
+    return a.final >= 5;
+}
+
+void sortLosersAndWinnersList(string fileRead, string fileSortLosers, string fileSortWinners, list<Student>& studentL, int strategy) {
     stringstream buffer;
     stringstream buffer2;
+    list<Student> losers;
+    list<Student> winners;
     Student temp;
     string eil;
     int temp2;
     int sum{ 0 };
     float vid;
+    int index = 0;
 
     auto start = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> diff;
@@ -52,6 +63,7 @@ void sortLosersAndWinnersList(string fileRead, string fileSortLosers, string fil
             temp.grade.shrink_to_fit();
             temp.numOfGrades = temp.grade.size();
             studentL.push_back(temp);
+
             temp = {};
         }
         else {
@@ -65,12 +77,11 @@ void sortLosersAndWinnersList(string fileRead, string fileSortLosers, string fil
 
     list<Student>::iterator it = studentL.begin();
 
-    for (auto student : studentL) {
+    for (auto &student : studentL) {
         std::advance(it, 1);
         student.examFinal = 0.6 * student.examGrade;
 
         for (int j = 0; j < student.numOfGrades - 1; j++) {
-            sort(student.grade.begin(), student.grade.end() - 1);
             sum += student.grade[j];
             try {
                 if (student.grade[j] < 1 || student.grade[j] > 10 || student.examGrade < 1 || student.examGrade > 10) {
@@ -86,7 +97,6 @@ void sortLosersAndWinnersList(string fileRead, string fileSortLosers, string fil
         vid = (double)sum / gradeNr;
 
         student.final = 0.4 * vid + student.examFinal;
-
         sum = 0;
 
         if (student.numOfGrades % 2 == 0) {
@@ -98,39 +108,18 @@ void sortLosersAndWinnersList(string fileRead, string fileSortLosers, string fil
         student.medFinal = (0.4 * student.median) + (0.6 * student.examGrade);
     }
 
-    foutLosers << "Vardas";
-    foutLosers.fill(' ');
-    foutLosers.width(17);
-    foutLosers << "Pavarde";
-    foutLosers.fill(' ');
-    foutLosers.width(26);
-    foutLosers << "Galutinis (vid.)" << '\n';
+    //strategy 1
 
-    foutWinners << "Vardas";
-    foutWinners.fill(' ');
-    foutWinners.width(16);
-    foutWinners << "Pavarde";
-    foutWinners.fill(' ');
-    foutWinners.width(26);
-    foutWinners << "Galutinis (vid.)" << '\n';
-
-    for (auto student : studentL) {
-        if (student.final < 5) {
-            foutLosers << student.name << string(16 - student.name.length(), ' ') << student.surname << string(16 - student.surname.length(), ' ');
-            foutLosers.fill(' ');
-            foutLosers.width(10);
-            foutLosers << fixed << setprecision(2) << student.final << '\n';
-            diff = std::chrono::high_resolution_clock::now() - start;
-        }
-        else if (student.final >= 5) {
-            foutWinners << student.name << string(16 - student.name.length(), ' ') << student.surname << string(16 - student.surname.length(), ' ');
-            diff = std::chrono::high_resolution_clock::now() - start;
-            foutWinners.fill(' ');
-            foutWinners.width(10);
-            foutWinners << fixed << setprecision(2) << student.final << '\n';
-            diff = std::chrono::high_resolution_clock::now() - start;
-        }
+    if (strategy == 1) {
+        strategyOneL(studentL, losers, winners, fileSortLosers, fileSortWinners);
     }
+
+    //strategy 2
+
+    else if (strategy == 2) {
+        strategyTwoL(studentL, losers, fileSortLosers, fileSortWinners);
+    }
+
     cout << "Sugeneruoti du surusiuotu studentu failai 'Losers and winners' folderyje\n";
     cout << "Studentu surusiavimas bei ju isvedimas i du atskirus failus uztruko: " << diff.count() << "s\n";
 }

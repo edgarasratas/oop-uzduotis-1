@@ -1,13 +1,16 @@
 #include "Funkcijos.h"
 
-void sortLosersAndWinnersDeque(string fileRead, string fileSortLosers, string fileSortWinners, deque<Student>& studentD) {
+void sortLosersAndWinnersDeque(string fileRead, string fileSortLosers, string fileSortWinners, deque<Student>& studentD, int strategy) {
     stringstream buffer;
     stringstream buffer2;
+    deque<Student> losers;
+    deque<Student> winners;
     Student temp;
     string eil;
     int temp2;
     int sum{ 0 };
     float vid;
+    int index = 0;
 
     auto start = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> diff;
@@ -95,38 +98,16 @@ void sortLosersAndWinnersDeque(string fileRead, string fileSortLosers, string fi
         studentD[i].medFinal = (0.4 * studentD[i].median) + (0.6 * studentD[i].examGrade);
     }
 
-    foutLosers << "Vardas";
-    foutLosers.fill(' ');
-    foutLosers.width(17);
-    foutLosers << "Pavarde";
-    foutLosers.fill(' ');
-    foutLosers.width(26);
-    foutLosers << "Galutinis (vid.)" << '\n';
+    //strategy 1
 
-    foutWinners << "Vardas";
-    foutWinners.fill(' ');
-    foutWinners.width(16);
-    foutWinners << "Pavarde";
-    foutWinners.fill(' ');
-    foutWinners.width(26);
-    foutWinners << "Galutinis (vid.)" << '\n';
+    if (strategy == 1) {
+        strategyOneD(studentD, losers, winners, fileSortLosers, fileSortWinners);
+    }
 
-    for (int i = 0; i < studentD.size(); i++) {
-        if (studentD[i].final < 5) {
-            foutLosers << studentD[i].name << string(16 - studentD.at(i).name.length(), ' ') << studentD[i].surname << string(16 - studentD.at(i).surname.length(), ' ');
-            foutLosers.fill(' ');
-            foutLosers.width(10);
-            foutLosers << fixed << setprecision(2) << studentD[i].final << '\n';
-            diff = std::chrono::high_resolution_clock::now() - start;
-        }
-        else if (studentD[i].final >= 5) {
-            foutWinners << studentD[i].name << string(16 - studentD.at(i).name.length(), ' ') << studentD[i].surname << string(16 - studentD.at(i).surname.length(), ' ');
-            diff = std::chrono::high_resolution_clock::now() - start;
-            foutWinners.fill(' ');
-            foutWinners.width(10);
-            foutWinners << fixed << setprecision(2) << studentD[i].final << '\n';
-            diff = std::chrono::high_resolution_clock::now() - start;
-        }
+    //strategy 2
+
+    else if (strategy == 2) {
+        strategyTwoD(studentD, losers, fileSortLosers, fileSortWinners);
     }
     cout << "Sugeneruoti du surusiuotu studentu failai 'Losers and winners' folderyje\n";
     cout << "Studentu surusiavimas bei ju isvedimas i du atskirus failus uztruko: " << diff.count() << "s\n";
