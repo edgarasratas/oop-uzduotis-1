@@ -94,3 +94,32 @@ Sistemos parametrai naudojami testavimui:
 [v0.5.1](https://github.com/edgarasratas/oop-uzduotis-1/tree/v0.5)
 -----------------------------------------------------------------
 Pataisytos kelios klaidos susijusios su optimizavimu.
+-----------------------------------------------------------------
+[v1.0](https://github.com/edgarasratas/oop-uzduotis-1/tree/v1.0)
+-----------------------------------------------------------------
+Pridėta galimybė pasirinkti dvi strategijas studentų rūšiavimui:
+1. **Strategija 1.** Konteineris *student* yra suskaidomas į du atskirus konteinerius skirtus laikyti gerus bei blogus studentus
+2. **Strategija 2.** Yra sukuriamas vienas naujas konteineris, kuriame laikoma visi blogi studentai, o tie patys blogi studentai yra ištrinami iš bendro studentų konteinerio, todėl tas bendras konteineris laiko tik gerus studentus.
+
+Žemiau yra palyginami laikai tarp šių dviejų strategijų.
+
+**Strategija 1**
+
+
+*Rūšiavimas ir išvedimas*
+|   Konteineris       |         10000                  |         100000             |        1000000           |       10000000
+|---------------------|:------------------------------:|:--------------------------:|:------------------------:|:-----------------------:|
+|      Vector         |         0.0128002              |         0.123162           |        1.13172           |       11.5776           |
+|      Deque          |         0.0133573              |         0.129359           |        1.24612           |       12.7791           |
+|      List           |         0.011144               |         0.104622           |        1.05499           |       10.6363           |
+-----------------------------------------------------------------
+
+**Strategija 2**
+
+*Rūšiavimas ir išvedimas*
+|   Konteineris       |         10000                  |         100000             |        1000000           |       10000000
+|---------------------|:------------------------------:|:--------------------------:|:------------------------:|:-----------------------:|
+|      Vector         |         0.0124096              |         0.121238           |        1.13111           |       11.7551           |
+|      Deque          |         0.0129485              |         0.124776           |        1.20616           |       12.3648           |
+|      List           |         0.0113094              |         0.107852           |        1.04427           |       10.5682           |
+-----------------------------------------------------------------
