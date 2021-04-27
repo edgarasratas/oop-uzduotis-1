@@ -1,13 +1,16 @@
 #include "Funkcijos.h"
 
-void sortLosersAndWinnersVector(string fileRead, string fileSortLosers, string fileSortWinners, vector<Student>& student) {
+void sortLosersAndWinnersVector(string fileRead, string fileSortLosers, string fileSortWinners, vector<Student>& student, int strategy) {
 	stringstream buffer;
     stringstream buffer2;
+    vector<Student> losers;
+    vector<Student> winners;
     Student temp;
     string eil;
     int temp2;
     int sum{ 0 };
     float vid;
+    int index = 0;
 
     auto start = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> diff;
@@ -95,39 +98,18 @@ void sortLosersAndWinnersVector(string fileRead, string fileSortLosers, string f
         student[i].medFinal = (0.4 * student[i].median) + (0.6 * student[i].examGrade);
     }
 
-    foutLosers << "Vardas";
-    foutLosers.fill(' ');
-    foutLosers.width(17);
-    foutLosers << "Pavarde";
-    foutLosers.fill(' ');
-    foutLosers.width(26);
-    foutLosers << "Galutinis (vid.)" << '\n';
+    //strategy 1
 
-    foutWinners << "Vardas";
-    foutWinners.fill(' ');
-    foutWinners.width(16);
-    foutWinners << "Pavarde";
-    foutWinners.fill(' ');
-    foutWinners.width(26);
-    foutWinners << "Galutinis (vid.)" << '\n';
-
-    for (int i = 0; i < student.size(); i++) {
-        if (student[i].final < 5) {
-            foutLosers << student[i].name << string(16 - student.at(i).name.length(), ' ') << student[i].surname << string(16 - student.at(i).surname.length(), ' ');
-            foutLosers.fill(' ');
-            foutLosers.width(10);
-            foutLosers << fixed << setprecision(2) << student[i].final << '\n';
-            diff = std::chrono::high_resolution_clock::now() - start;
-        }
-        else if (student[i].final >= 5) {
-            foutWinners << student[i].name << string(16 - student.at(i).name.length(), ' ') << student[i].surname << string(16 - student.at(i).surname.length(), ' ');
-            diff = std::chrono::high_resolution_clock::now() - start;
-            foutWinners.fill(' ');
-            foutWinners.width(10);
-            foutWinners << fixed << setprecision(2) << student[i].final << '\n';
-            diff = std::chrono::high_resolution_clock::now() - start;
-        }
+    if (strategy == 1) {
+        strategyOneV(student, losers, winners, fileSortLosers, fileSortWinners);
     }
+
+    //strategy 2
+
+    else if (strategy == 2) {
+        strategyTwoV(student, losers, fileSortLosers, fileSortWinners);
+    }
+
     cout << "Sugeneruoti du surusiuotu studentu failai 'Losers and winners' folderyje\n";
     cout << "Studentu surusiavimas bei ju isvedimas i du atskirus failus uztruko: " << diff.count() << "s\n";
 }

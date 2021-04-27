@@ -4,12 +4,28 @@
 void nuskaitymasDeque(string fileRead, string fileWrite, string fileSortLosers, string fileSortWinners, deque<Student>& studentD) {
     string eil;
     deque<string> myDeque;
+    deque<Student> losers;
+    deque<Student> winners;
     stringstream my_buffer;
     stringstream buffer2;
     Student temp;
     int temp2;
     int sum = 0;
     float vid = 0;
+    int strategy;
+    int index = 0;
+
+    do {
+        index++;
+        if (index != 1)
+            cout << "Neteisinga ivestis. Bandykite dar karta.\n";
+
+        cout << "Kokia strategija noretumet panaudoti? (1/2)\n";
+        cin >> strategy;
+
+        if (strategy == 1 || strategy == 2)
+            break;
+    } while (strategy != 1 || strategy != 2);
 
     auto start = std::chrono::high_resolution_clock::now(); auto st = start;
 
@@ -124,36 +140,18 @@ void nuskaitymasDeque(string fileRead, string fileWrite, string fileSortLosers, 
 
     start = std::chrono::high_resolution_clock::now();
 
-    foutLosers << "Vardas";
-    foutLosers.fill(' ');
-    foutLosers.width(17);
-    foutLosers << "Pavarde";
-    foutLosers.fill(' ');
-    foutLosers.width(26);
-    foutLosers << "Galutinis (vid.)" << '\n';
+    //strategy 1
 
-    foutWinners << "Vardas";
-    foutWinners.fill(' ');
-    foutWinners.width(16);
-    foutWinners << "Pavarde";
-    foutWinners.fill(' ');
-    foutWinners.width(26);
-    foutWinners << "Galutinis (vid.)" << '\n';
-
-    for (int i = 0; i < studentD.size(); i++) {
-        if (studentD[i].final < 5) {
-            foutLosers << studentD[i].name << string(16 - studentD.at(i).name.length(), ' ') << studentD[i].surname << string(16 - studentD.at(i).surname.length(), ' ');
-            foutLosers.fill(' ');
-            foutLosers.width(10);
-            foutLosers << fixed << setprecision(2) << studentD[i].final << '\n';
-        }
-        else if (studentD[i].final >= 5) {
-            foutWinners << studentD[i].name << string(16 - studentD.at(i).surname.length(), ' ') << studentD[i].surname << string(16 - studentD.at(i).surname.length(), ' ');
-            foutWinners.fill(' ');
-            foutWinners.width(10);
-            foutWinners << fixed << setprecision(2) << studentD[i].final << '\n';
-        }
+    if (strategy == 1) {
+        strategyOneD(studentD, losers, winners, fileSortLosers, fileSortWinners);
     }
+
+    //strategy 2
+
+    else if (strategy == 2) {
+        strategyTwoD(studentD, losers, fileSortLosers, fileSortWinners);
+    }
+
     fin.close();
     fout.close();
 

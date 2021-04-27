@@ -1,4 +1,27 @@
 # Užduotis "Pažymių skaičiuoklė"
+-----------------------------------------------------------------
+PROGRAMOS PALEIDIMO INSTRUKCIJA
+-----------------------------------------------------------------
+1. Atsisiųskite naujausią versiją iš 'Releases' aplanko.
+2. Išsiarchyvuokite visus failus į norimą direktoriją
+3. Atsisiųskite 'CMake' bei 'CMakeGUI'
+4. Paleiskite "CMakeGUI'
+5. Įveskite direktoriją, kur programa randasi (1) bei kur norėtumėte sukurti 'build' failus (2)
+6. Paspauskite 'Configure'
+7. Kai baigs sukonfigūruoti, paspauskite 'Generate', kad sugeneruotų 'build' failus reikiamoje direktorijoje
+![image](https://user-images.githubusercontent.com/73912309/116253108-dcf6ad80-a778-11eb-9c41-40efd4b8591b.png)
+8. Paleiskite 'main_vector.vcxproj' failą, kad progros kodas pasileistų VS 2019 kompiliatoriuje
+9. Atsidarius VS 2019, dešinėje pusėje paspauskite dešinį pelės mygtuką ant "Solution 'main_vector'" (1), tada 'Properties' (2)
+![image](https://user-images.githubusercontent.com/73912309/116254007-a66d6280-a779-11eb-95a3-d56cf7a53fa5.png)
+10. Pasirinkite 'Single startup project' ir pasirinkite 'main_vector'
+11. Paspauskite 'Apply' ir 'OK'
+![image](https://user-images.githubusercontent.com/73912309/116255082-96a24e00-a77a-11eb-83f7-132943407e16.png)
+12. Galite pasirinkti 'Release' vietoj 'Debug', kad programa sparčiau veiktų
+![image](https://user-images.githubusercontent.com/73912309/116254702-3c08f200-a77a-11eb-89df-76879fef3648.png)
+13. Paleisti programą galite paspaudžius žalią rodyklę viršuje arba paspaudžius CTRL + F5
+-----------------------------------------------------------------
+ATNAUJINIMŲ ISTORIJA
+-----------------------------------------------------------------
 [v0.1](https://github.com/edgarasratas/oop-uzduotis-1/tree/v0.1)
 -----------------------------------------------------------------
 Šioje programoje galima įrašyti studentų vardus, pavardes bei pažymius (egzamino bei namų darbų).
@@ -94,3 +117,32 @@ Sistemos parametrai naudojami testavimui:
 [v0.5.1](https://github.com/edgarasratas/oop-uzduotis-1/tree/v0.5)
 -----------------------------------------------------------------
 Pataisytos kelios klaidos susijusios su optimizavimu.
+-----------------------------------------------------------------
+[v1.0](https://github.com/edgarasratas/oop-uzduotis-1/tree/v1.0)
+-----------------------------------------------------------------
+Pridėta galimybė pasirinkti dvi strategijas studentų rūšiavimui:
+1. **Strategija 1.** Konteineris *student* yra suskaidomas į du atskirus konteinerius skirtus laikyti gerus bei blogus studentus
+2. **Strategija 2.** Yra sukuriamas vienas naujas konteineris, kuriame laikoma visi blogi studentai, o tie patys blogi studentai yra ištrinami iš bendro studentų konteinerio, todėl tas bendras konteineris laiko tik gerus studentus.
+
+Žemiau yra palyginami laikai tarp šių dviejų strategijų.
+
+**Strategija 1**
+
+
+*Rūšiavimas ir išvedimas*
+|   Konteineris       |         10000                  |         100000             |        1000000           |       10000000
+|---------------------|:------------------------------:|:--------------------------:|:------------------------:|:-----------------------:|
+|      Vector         |         0.0128002              |         0.123162           |        1.13172           |       11.5776           |
+|      Deque          |         0.0133573              |         0.129359           |        1.24612           |       12.7791           |
+|      List           |         0.011144               |         0.104622           |        1.05499           |       10.6363           |
+-----------------------------------------------------------------
+
+**Strategija 2**
+
+*Rūšiavimas ir išvedimas*
+|   Konteineris       |         10000                  |         100000             |        1000000           |       10000000
+|---------------------|:------------------------------:|:--------------------------:|:------------------------:|:-----------------------:|
+|      Vector         |         0.0124096              |         0.121238           |        1.13111           |       11.7551           |
+|      Deque          |         0.0129485              |         0.124776           |        1.20616           |       12.3648           |
+|      List           |         0.0113094              |         0.107852           |        1.04427           |       10.5682           |
+-----------------------------------------------------------------
