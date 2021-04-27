@@ -138,6 +138,7 @@ Programos paleidimo instrukcija
 ![image](https://user-images.githubusercontent.com/73912309/116254007-a66d6280-a779-11eb-95a3-d56cf7a53fa5.png)
 10. Pasirinkite 'Single startup project' ir pasirinkite 'main_vector'
 11. Paspauskite 'Apply' ir 'OK'
+![image](https://user-images.githubusercontent.com/73912309/116255082-96a24e00-a77a-11eb-83f7-132943407e16.png)
 12. Galite pasirinkti 'Release' vietoj 'Debug', kad programa sparčiau veiktų
 ![image](https://user-images.githubusercontent.com/73912309/116254702-3c08f200-a77a-11eb-89df-76879fef3648.png)
 13. Paleisti programą galite paspaudžius žalią rodyklę viršuje arba paspaudžius CTRL + F5
