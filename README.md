@@ -123,3 +123,21 @@ Pridėta galimybė pasirinkti dvi strategijas studentų rūšiavimui:
 |      Deque          |         0.0129485              |         0.124776           |        1.20616           |       12.3648           |
 |      List           |         0.0113094              |         0.107852           |        1.04427           |       10.5682           |
 -----------------------------------------------------------------
+Programos paleidimo instrukcija
+-----------------------------------------------------------------
+1. Atsisiųskite naujausią versiją iš 'Releases' aplanko.
+2. Išsiarchyvuokite visus failus į norimą direktoriją
+3. Atsisiųskite 'CMake' bei 'CMakeGUI'
+4. Paleiskite "CMakeGUI'
+5. Įveskite direktoriją, kur programa randasi (1) bei kur norėtumėte sukurti 'build' failus (2)
+6. Paspauskite 'Configure'
+7. Kai baigs sukonfigūruoti, paspauskite 'Generate', kad sugeneruotų 'build' failus reikiamoje direktorijoje
+![image](https://user-images.githubusercontent.com/73912309/116253108-dcf6ad80-a778-11eb-9c41-40efd4b8591b.png)
+8. Paleiskite 'main_vector.vcxproj' failą, kad progros kodas pasileistų VS 2019 kompiliatoriuje
+9. Atsidarius VS 2019, dešinėje pusėje paspauskite dešinį pelės mygtuką ant "Solution 'main_vector'" (1), tada 'Properties' (2)
+![image](https://user-images.githubusercontent.com/73912309/116254007-a66d6280-a779-11eb-95a3-d56cf7a53fa5.png)
+10. Pasirinkite 'Single startup project' ir pasirinkite 'main_vector'
+11. Paspauskite 'Apply' ir 'OK'
+12. Galite pasirinkti 'Release' vietoj 'Debug', kad programa sparčiau veiktų
+![image](https://user-images.githubusercontent.com/73912309/116254702-3c08f200-a77a-11eb-89df-76879fef3648.png)
+13. Paleisti programą galite paspaudžius žalią rodyklę viršuje arba paspaudžius CTRL + F5
